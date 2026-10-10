@@ -26,7 +26,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File distill\parse-worldview.
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File distill\gen-fragments.ps1
 
 # 6) 安装/更新到技能根（按需，见下节）
-$src = Join-Path $PSScriptRoot 'skill'
+$src = '.\skill'
 $dst = "$env:USERPROFILE\.dsh\skills\dsh-hsr-lore"
 robocopy $src $dst /MIR /NFL /NDL /NJH /NJS /NP
 ```
