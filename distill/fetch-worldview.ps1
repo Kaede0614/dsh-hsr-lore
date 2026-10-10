@@ -5,7 +5,7 @@
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 
-$Root   = 'C:\Users\masha\Desktop\hsr-skill\distill'
+$Root   = $PSScriptRoot
 $RawDir = Join-Path $Root 'raw\worldview'
 $LogFile = Join-Path $Root 'fetch-worldview-log.txt'
 $Base   = 'https://wiki.biligame.com/sr/api.php'

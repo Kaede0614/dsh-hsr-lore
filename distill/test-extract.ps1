@@ -2,11 +2,11 @@
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 
-. 'C:\Users\masha\Desktop\hsr-skill\distill\story-extract.ps1'
+. (Join-Path $PSScriptRoot 'story-extract.ps1')
 
 $name = $args[0]
 if (-not $name) { $name = '大墓啊，深藏轮回的秘密' }
-$f = Join-Path 'C:\Users\masha\Desktop\hsr-skill\distill\raw\missions' "$name.wikitext"
+$f = Join-Path (Join-Path $PSScriptRoot 'raw\missions') "$name.wikitext"
 if (-not (Test-Path $f)) { Write-Host "缺少文件：$f"; exit 1 }
 
 $text = [System.IO.File]::ReadAllText($f, [System.Text.Encoding]::UTF8)

@@ -7,7 +7,7 @@ $ProgressPreference = 'SilentlyContinue'
 
 . (Join-Path $PSScriptRoot 'clean-wikitext.ps1')
 
-$Root   = 'C:\Users\masha\Desktop\hsr-skill\distill'
+$Root   = $PSScriptRoot
 $RawDir = Join-Path $Root 'raw\worldview'
 $OutDir = Join-Path $Root 'out'
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null

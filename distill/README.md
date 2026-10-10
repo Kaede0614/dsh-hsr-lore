@@ -22,37 +22,41 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File distill\fetch-worldview.
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File distill\parse-worldview.ps1
 
 # 5) 生成 Skill 内容：data\*.json + references\*.md + manifest.yaml
+#    默认写入本仓库的 skill\ 目录（脚本用 $PSScriptRoot 定位，可移植）
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File distill\gen-fragments.ps1
 
-# 6) 同步到全局技能目录（可选但强烈建议，见下节「两份副本」）
-$src = 'C:\Users\masha\Desktop\hsr-skill\.dsh\skills\dsh-hsr-lore'
+# 6) 安装/更新到技能根（按需，见下节）
+$src = Join-Path $PSScriptRoot 'skill'
 $dst = "$env:USERPROFILE\.dsh\skills\dsh-hsr-lore"
 robocopy $src $dst /MIR /NFL /NDL /NJH /NJS /NP
 ```
 
-## 两份副本：项目级 vs 用户级（重要）
+## 目录约定：仓库内生成，按需安装（重要）
 
-本 Skill 同时存在两份，**skill 查找顺序是「项目级(100) > 用户级(400)」**：
+本仓库**自包含**，脚本一律用 `$PSScriptRoot` 定位，不写死绝对路径：
 
-| 位置 | 作用 | 何时生效 |
-| --- | --- | --- |
-| `C:\Users\masha\Desktop\hsr-skill\.dsh\skills\dsh-hsr-lore` | 构建工作副本 | 在 `Desktop\hsr-skill` 目录下工作时 |
-| `C:\Users\masha\AppData\... → C:\Users\masha\.dsh\skills\dsh-hsr-lore` | **全局副本** | 在**其它任何目录**下工作时 |
+| 路径 | 角色 |
+| --- | --- |
+| `distill/` | 流水线本体；`raw/`（wiki 原始缓存）与 `out/`（解析中间产物）**不入库**，可重新生成 |
+| `skill/` | 生成产物 = 可直接拷进技能根的成品；`gen-fragments.ps1` 的 `$SkillDir` 默认指向它 |
+| `~/.dsh/skills/dsh-hsr-lore/` | **安装位置**（用户级技能根），由第 6 步 robocopy 同步 |
 
-**坑**：在 `Desktop\hsr-skill` 里工作时，项目副本会**遮蔽**全局副本 ——
-此时改全局副本不生效，改项目副本也不会影响别处。两份必须一起更新。
+**为什么要分「仓库内 skill/」和「已安装的副本」**：
+dsh 的技能查找顺序是**项目级 `.dsh/skills`(rank 100) > 用户级 `~/.dsh/skills`(rank 400)**，
+同名时前者遮蔽后者。所以：
 
-所以流程是：**改内容 → 跑 `gen-fragments.ps1`（更新项目副本）→ robocopy 同步到全局**。
-两边都变完后再用 SHA256 抽查一次，确认没有分叉：
+- 想让某个项目里用**固定版本**，就把 `skill/` 拷到该项目的 `.dsh/skills/dsh-hsr-lore/`；
+- 想全局生效，就同步到 `~/.dsh/skills/`；
+- **不要同时保留两份并分别修改** —— 会分叉，且「改了没生效」。
+
+改完内容后，确认两边一致：
 
 ```powershell
+$src = ".\skill"; $dst = "$env:USERPROFILE\.dsh\skills\dsh-hsr-lore"
 Compare-Object (Get-ChildItem $src -Recurse -File | ForEach-Object { $_.FullName.Replace($src,'') + ' ' + (Get-FileHash $_.FullName -Algorithm SHA256).Hash }) `
                (Get-ChildItem $dst -Recurse -File | ForEach-Object { $_.FullName.Replace($dst,'') + ' ' + (Get-FileHash $_.FullName -Algorithm SHA256).Hash })
 # 无输出 = 两份完全一致
 ```
-
-> 也可以干脆删掉项目副本、只保留全局那份，这样不存在遮蔽问题；
-> 代价是构建工作区少一份可直接预览的副本，且 `distill/` 的重跑结果不会「就地」生效。
 
 ## 脚本职责
 

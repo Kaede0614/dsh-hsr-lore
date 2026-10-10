@@ -7,7 +7,7 @@
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 
-$Root    = 'C:\Users\masha\Desktop\hsr-skill\distill'
+$Root    = $PSScriptRoot
 $RawDir  = Join-Path $Root 'raw\missions'
 $OutDir  = Join-Path $Root 'out'
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null

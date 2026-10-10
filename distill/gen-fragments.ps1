@@ -5,12 +5,12 @@
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 
-. 'C:\Users\masha\Desktop\hsr-skill\distill\story-extract.ps1'
+. (Join-Path $PSScriptRoot 'story-extract.ps1')
 
-$Root      = 'C:\Users\masha\Desktop\hsr-skill\distill'
+$Root      = $PSScriptRoot
 $RawMissions = Join-Path $Root 'raw\missions'
 $OutDir    = Join-Path $Root 'out'
-$SkillDir  = 'C:\Users\masha\Desktop\hsr-skill\.dsh\skills\dsh-hsr-lore'
+$SkillDir  = (Join-Path (Split-Path $PSScriptRoot -Parent) 'skill')
 $DataDir   = Join-Path $SkillDir 'data'
 $RefDir    = Join-Path $SkillDir 'references'
 New-Item -ItemType Directory -Force -Path $DataDir, $RefDir | Out-Null

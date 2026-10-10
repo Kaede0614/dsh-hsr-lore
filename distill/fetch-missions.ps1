@@ -5,7 +5,7 @@
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 
-$Root     = 'C:\Users\masha\Desktop\hsr-skill\distill'
+$Root     = $PSScriptRoot
 $RawDir   = Join-Path $Root 'raw\missions'
 $ListFile = Join-Path $Root 'raw\cat-开拓任务.json'
 $LogFile  = Join-Path $Root 'fetch-log.txt'
