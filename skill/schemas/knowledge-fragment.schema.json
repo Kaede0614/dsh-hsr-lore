@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dsh.local/schemas/knowledge-fragment.schema.json",
+  "title": "dsh-hsr-lore knowledge fragment",
+  "description": "dsh-hsr-lore 的结构化知识分片。data/*.json 是源数据（便于按 ID 合并与增量更新），references/*.md 是它的可读摘要视图。",
+  "type": "object",
+  "required": ["id", "type", "title", "source_urls", "retrieved_at", "knowledge_version", "entries"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "分片稳定 ID，例如 chapter-01-jarilo / worldview-aeons / glossary",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["chapter", "worldview", "location", "glossary"],
+      "description": "分片类型：主线章节 / 世界观 / 地点 / 术语总表"
+    },
+    "title": { "type": "string", "description": "人类可读标题" },
+    "chapter": {
+      "type": ["string", "null"],
+      "description": "所属章节/幕，例如「第一幕·雅利洛-Ⅵ」；非章节分片为 null"
+    },
+    "chapter_order": {
+      "type": ["number", "null"],
+      "description": "主线中的顺序位次，用于查询路由时判断前后承接；非章节分片为 null"
+    },
+    "source_urls": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "本分片全部条目的来源页面 URL（biligame wiki）"
+    },
+    "license": {
+      "type": "string",
+      "default": "CC BY-NC-SA 4.0 (biligame wiki)",
+      "description": "来源许可协议，固定值"
+    },
+    "retrieved_at": { "type": "string", "description": "抓取日期 YYYY-MM-DD" },
+    "last_updated": { "type": "string", "description": "最近一次修订日期 YYYY-MM-DD" },
+    "knowledge_version": { "type": "string", "description": "写入时的知识库版本，形如 1.0.0" },
+    "coverage": { "type": "string", "description": "本分片覆盖范围的一句话说明" },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "把握度；仅 wiki 单一来源且未经交叉核对时为 high（wiki 自身可信），有冲突未决时降级"
+    },
+    "supersedes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "被本分片取代的旧分片 ID（通常为空；结构优化时才使用）"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "查询路由关键词：章节名、地区名、关键角色、事件名"
+    },
+    "entities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "本分片涉及的实体名（角色 / 地点 / 概念），供查询路由精确匹配"
+    },
+    "entries": {
+      "type": "array",
+      "description": "条目列表。每个条目有稳定 ID，更新时按 ID 合并，不整体重写。",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "name"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "稳定条目 ID，例如 quest:jarilo-01 / concept:aeon / term:开拓",
+            "pattern": "^(quest|concept|place|faction|term|character):[a-z0-9-]+$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["quest", "concept", "place", "faction", "term", "character"]
+          },
+          "name": { "type": "string", "description": "条目名称（任务名 / 概念名 / 术语名）" },
+          "chapter": { "type": ["string", "null"], "description": "所属章节/幕" },
+          "position": { "type": ["number", "null"], "description": "该章节内的顺序位次" },
+          "prerequisite": { "type": ["string", "null"], "description": "前置任务名或为 null" },
+          "followups": { "type": "array", "items": { "type": "string" }, "description": "后续任务名" },
+          "region": { "type": ["string", "null"], "description": "任务地区（主线舞台）" },
+          "version": { "type": ["string", "null"], "description": "所属游戏版本" },
+          "summary": { "type": "string", "description": "条目概要（剧情梗概 / 释义正文）" },
+          "summary_source": {
+            "type": "string",
+            "enum": ["wiki-gist", "story-derived", "wiki-description"],
+            "description": "概要的来源。wiki-gist=wiki 的「剧情梗概」原文；story-derived=wiki 未填梗概，由任务正文推导（须向用户说明）；wiki-description=退回 wiki 的任务描述字段"
+          },
+          "provisional": {
+            "type": "boolean",
+            "description": "摘要是否为临时推导（true 表示 wiki 尚无梗概，回答时必须声明摘要非 wiki 原文）"
+          },
+          "key_points": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "该条目的剧情关键节点（梗概按句拆分后的编号列表）"
+          },
+          "characters": { "type": "array", "items": { "type": "string" }, "description": "出场人物" },
+          "objectives": { "type": "array", "items": { "type": "string" }, "description": "任务流程 / 目标步骤" },
+          "transitions": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "本任务与前后任务的承接关系与因果说明（由前置/后续链推导）"
+          },
+          "foreshadowing": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "跨章节伏笔或呼应标记。只标注、不展开分析。"
+          },
+          "segments": {
+            "type": "array",
+            "description": "对话/旁白/场景/选项片段。仅保留关键片段，逐字全文不入 Skill。",
+            "items": {
+              "type": "object",
+              "required": ["type", "content"],
+              "properties": {
+                "type": { "type": "string", "enum": ["dialogue", "narration", "scene", "option"] },
+                "speaker": { "type": ["string", "null"], "description": "仅 dialogue 有值" },
+                "content": { "type": "string" },
+                "note": { "type": ["string", "null"], "description": "选项分支等补充说明" }
+              }
+            }
+          },
+          "source_url": { "type": "string", "description": "该条目的来源页面 URL" },
+          "history": {
+            "type": "array",
+            "description": "该条目被修订时保留的旧版本（不覆盖旧内容）",
+            "items": {
+              "type": "object",
+              "required": ["date", "summary"],
+              "properties": {
+                "date": { "type": "string" },
+                "summary": { "type": "string" },
+                "source_url": { "type": ["string", "null"] }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+# 换行与编码策略
+#
+# 背景：本项目的 .ps1 脚本依赖 **UTF-8 with BOM** —— Windows PowerShell 5.1 会把无 BOM 的
+# UTF-8 当 GBK 读，中文字面量被拆坏，报一堆假语法错误，而且脚本可能「跑一半静默退出」。
+# 所以这里必须防止 git 的换行规范化动到 BOM 与字节内容。
+
+# 默认：入库统一 LF，检出时按平台
+* text=auto
+
+# PowerShell 脚本：显式声明为文本、使用 LF。
+# 不写 eol=crlf 是因为本仓库的脚本在两种换行下都能跑，而统一换行可避免 diff 噪声；
+# 关键约束是**不要**让 git 因换行转换而改动文件字节（BOM 会随之丢失）。
+*.ps1   text eol=lf
+
+# 以下类型明确不做换行规范化，防止任何字节级改动：
+*.patch  -text
+*.sln    -text
+
+# 二进制
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
+*.tgz   binary
+*.gz    binary
+
+# 语言标注（GitHub 语法高亮 / 统计）
+*.md    linguist-documentation

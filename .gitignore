@@ -1,0 +1,24 @@
+# --- 可再生的构建缓存与中间产物：不入库 ---
+# distill/raw/ 是 wiki 原始 wikitext 缓存（约 6.8 MB），随时可由 fetch-missions.ps1 /
+# fetch-worldview.ps1 重新抓取，无需版本控制。
+distill/raw/
+# 解析中间产物，跑 parse-*.ps1 即可重建
+distill/out/
+# 抓取日志（含时间戳与失败重试记录，属运行痕迹）
+distill/fetch-log.txt
+distill/fetch-worldview-log.txt
+distill/fetch-failed.txt
+
+# --- 通用 ---
+*.log
+*.tmp
+*.bak
+*~
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# --- 编辑器 ---
+.vscode/
+.idea/
+*.swp

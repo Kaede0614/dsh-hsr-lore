@@ -1,0 +1,173 @@
+# dsh-hsr-lore 知识分片清单
+# 由 distill/gen-fragments.ps1 生成；查询路由与更新管理都以此文件为准，不要在 SKILL.md 里硬编码章节列表。
+
+knowledge_version: 0.1.4
+last_updated: 2026-10-10
+license: CC BY-NC-SA 4.0 (biligame wiki)
+source: https://wiki.biligame.com/sr/
+entry_count: 464
+
+# 辅助索引（不是知识分片、没有 entries；查询路由的第一步先读它）
+indexes:
+  - id: chapter-index
+    file: references/chapter-index.md
+    title: 主线章节总览与查询路由（含已收录/未收录判定与账目核对）
+    last_updated: 2026-10-10
+
+shards:
+  - id: chapter-00-herta
+    type: chapter
+    file: references/chapter-00-herta.md
+    data: data/chapter-00-herta.json
+    title: 序幕·空间站「黑塔」
+    chapter_order: 0
+    entries: 9
+    coverage: 主线任务 9 个（依据 wiki 任务类型=开拓任务 全量收录）；含任务流程、出场人物与关键片段（节选）；其中 1 个任务的摘要在 wiki 上尚无「剧情梗概」，改由任务正文推导（summary_source=story-derived，provisional=true）
+    retrieved_at: 2026-10-10
+    last_updated: 2026-10-10
+    version: 0.1.4
+    tags: [序幕·空间站「黑塔」, 空间站「黑塔」, 主线, 开拓任务]
+    entities: [卡芙卡, 银狼, 三月七, 丹恒, 瓦尔特, 姬子, 帕姆, 彦卿, 景元, 刃, 黑塔, 克里珀, 浮黎, 大黑塔, 星期日, 来古士, 阿兰, 艾丝妲, 辛克尔, 亚伯拉罕, 洛奇, 伯纳德, 埃美丽, 卢卡奇, 古恩, 希拉, 梅厄, 温世玲, 阿德勒, 纳努克]
+    source_urls:
+      - https://wiki.biligame.com/sr/开拓任务
+  - id: chapter-01-jarilo
+    type: chapter
+    file: references/chapter-01-jarilo.md
+    data: data/chapter-01-jarilo.json
+    title: 第一幕·雅利洛-Ⅵ
+    chapter_order: 1
+    entries: 28
+    coverage: 主线任务 28 个（依据 wiki 任务类型=开拓任务 全量收录）；含任务流程、出场人物与关键片段（节选）；其中 4 个任务的摘要在 wiki 上尚无「剧情梗概」，改由任务正文推导（summary_source=story-derived，provisional=true）
+    retrieved_at: 2026-10-10
+    last_updated: 2026-10-10
+    version: 0.1.4
+    tags: [第一幕·雅利洛-Ⅵ, 雅利洛-Ⅵ/雅利洛-VI, 主线, 开拓任务]
+    entities: [三月七, 丹恒, 姬子, 瓦尔特, 帕姆, 桑博, 杰帕德, 布洛妮娅, 希露瓦, 佩拉, 可可利亚, 娜塔莎, 虎克, 尤利安, 鼹鼠党跟班, 掘掘博士, 希儿, 匹克, 伊蕾恩, 查宝, 安东尼娜, 克拉拉, 史瓦罗, 奥列格, 歌蒂, 埃里克, 弗朗兹, 邓恩, 阿里娜, 约书亚, 克里珀, 杜尼娅, 菲多拉, 老歌德]
+    source_urls:
+      - https://wiki.biligame.com/sr/开拓任务
+  - id: chapter-02-luofu
+    type: chapter
+    file: references/chapter-02-luofu.md
+    data: data/chapter-02-luofu.json
+    title: 第二幕·仙舟「罗浮」
+    chapter_order: 2
+    entries: 18
+    coverage: 主线任务 18 个（依据 wiki 任务类型=开拓任务 全量收录）；含任务流程、出场人物与关键片段（节选）；其中 2 个任务的摘要在 wiki 上尚无「剧情梗概」，改由任务正文推导（summary_source=story-derived，provisional=true）
+    retrieved_at: 2026-10-10
+    last_updated: 2026-10-10
+    version: 0.1.4
+    tags: [第二幕·仙舟「罗浮」, 仙舟「罗浮」, 主线, 开拓任务]
+    entities: [三月七, 瓦尔特, 停云, 驭空, 景元, 彦卿, 符玄, 丹恒, 姬子, 帕姆, 罗刹, 素裳, 阿来, 阿往, 清越, 西衍先生, 瀚典掌柜, 小吃摊主, 杂货摊主, 卡芙卡, 白露, 锦纹, 玉络, 净砚, 广大, 松烟, 大毫, 青雀, 明阅, 静斋, 公输师傅, 云澈, 子铭, 铖杰, 阿伟, 雪衣, 丹枢, 幻胧, 刃, 丹恒•饮月, 青镞, 岩明, 梦茗, 燕翠, 小鱼, 谛听, 镜流]
+    source_urls:
+      - https://wiki.biligame.com/sr/开拓任务
+  - id: chapter-03-penacony
+    type: chapter
+    file: references/chapter-03-penacony.md
+    data: data/chapter-03-penacony.json
+    title: 第三幕·匹诺康尼
+    chapter_order: 3
+    entries: 45
+    coverage: 主线任务 45 个（依据 wiki 任务类型=开拓任务 全量收录）；含任务流程、出场人物与关键片段（节选）
+    retrieved_at: 2026-10-10
+    last_updated: 2026-10-10
+    version: 0.1.4
+    tags: [第三幕·匹诺康尼, 匹诺康尼, 主线, 开拓任务]
+    entities: [三月七, 姬子, 丹恒, 瓦尔特, 帕姆, 黄泉, 星期日, 知更鸟, 真理医生, 砂金, 银狼, 萨姆, 黑天鹅, 花火, 米沙, 艾丽, 爱德华医生, 加拉赫, 流萤, 桑博, 哈努兄弟, 钟表小子, 冥火大公, 杜布拉, 阿卡什, 卡翠娜, 康士坦丝, 亨德列克, 托帕&账账, 波提欧, 夏布罗, 拉洛丝, 波奇, 伍尔西, 乌玛, 巴尔, 舒翁, 艾米绮, 翡翠, 米卡, 银枝, 景元, 托帕, 螺丝咕姆, 停云, 忘归人, 阮•梅, 驭空, 艾丝妲, 黑塔, 大黑塔]
+    source_urls:
+      - https://wiki.biligame.com/sr/开拓任务
+  - id: chapter-04-amphoreus
+    type: chapter
+    file: references/chapter-04-amphoreus.md
+    data: data/chapter-04-amphoreus.json
+    title: 第四幕·翁法罗斯
+    chapter_order: 4
+    entries: 66
+    coverage: 主线任务 66 个（依据 wiki 任务类型=开拓任务 全量收录）；含任务流程、出场人物与关键片段（节选）
+    retrieved_at: 2026-10-10
+    last_updated: 2026-10-10
+    version: 0.1.4
+    tags: [第四幕·翁法罗斯, 翁法罗斯, 主线, 开拓任务]
+    entities: [姬子, 瓦尔特, 丹恒, 三月七, 黑天鹅, 星期日, 白厄, 缇宝, 万敌, 遐蝶, 阿格莱雅, 赛飞儿, 风堇, 那刻夏, 昔涟, 卡芙卡, 刃, 流萤, 大黑塔, 黑塔, 螺丝咕姆, 来古士, 迷迷, 瑟希斯, 符玄, 「信使」, 「贼灵」巴特鲁斯, 海瑟音, 刻律德菈, 长夜月, 布洛妮娅, 「长夜」, 帕姆, 「闭嘴」, 银狼, 丹枫, 缇安, 缇宁, 应星, 镜流, 景元, 荒笛, 黄泉, 缇里西庇俄丝, 飞霄, 爻光, 砂金, 翡翠, 希露瓦, 托帕&账账, 希儿, 知更鸟, 德谬歌, 阮•梅]
+    source_urls:
+      - https://wiki.biligame.com/sr/开拓任务
+  - id: chapter-05-paradise
+    type: chapter
+    file: references/chapter-05-paradise.md
+    data: data/chapter-05-paradise.json
+    title: 第五幕·二相乐园/千星城
+    chapter_order: 5
+    entries: 51
+    coverage: 主线任务 51 个（依据 wiki 任务类型=开拓任务 全量收录）；含任务流程、出场人物与关键片段（节选）；其中 6 个任务的摘要在 wiki 上尚无「剧情梗概」，改由任务正文推导（summary_source=story-derived，provisional=true）
+    retrieved_at: 2026-10-10
+    last_updated: 2026-10-10
+    version: 0.1.4
+    tags: [第五幕·二相乐园/千星城, 二相乐园/千星城, 主线, 开拓任务]
+    entities: [姬子, 瓦尔特, 帕姆, 丹恒, 三月七, 星期日, 翡翠, 黑天鹅, 真珠, 花火, 普狸策, 斯科特, 火花, 朽叶, 啵啵娃, 绯英, 爻光, 忘归人, 银狼, 「旁白」, 不死途, 刃, 三月七•巡猎, 幻太子, 乔瓦尼, 桑博, 美玲, 隆介, 「闭嘴」, 费伦, 虚照, 真弘, 赤焰, 苍翼, 曙光, 满愿, 希露瓦, 钟珊, 卡芙卡, 灰烬, 阮•梅, 绘世, 怀炎, 镜流, 景元, 归寂, 佛狸, 叽米, 艾丝妲, 肯尼斯•在田, 灯塔, 摩多伽, 亚婆离, 肯尼斯, 砂金, 洁里珂, 大卫•戴]
+    source_urls:
+      - https://wiki.biligame.com/sr/开拓任务
+  - id: glossary
+    type: worldview
+    file: references/glossary.md
+    data: data/glossary.json
+    title: 
+    chapter_order: null
+    entries: 41
+    coverage: 41 个条目，逐条为 wiki 原文释义（已去表格/模板噪声）；其中 2 条为人工策展归纳（derived=true），1 条含未裁定的来源冲突（conflicts）
+    retrieved_at: 2026-10-10
+    last_updated: 2026-10-10
+    version: 0.1.4
+    tags: [专有名词表, 专有名词]
+    entities: [名词, 黑塔（地名）, 雅利洛-Ⅵ, 仙舟「罗浮, 仙舟「曜青, 仙舟「朱明, 匹诺康尼, 翁法罗斯, 善见天, 二相乐园, 裴伽纳, 千星城, 路易斯•弗莱明, 黑塔（人物）, 利尔他, 绝灭大君, 「帝皇」鲁珀特, 阮•梅, 波尔卡•卡卡目, 赞达尔•壹•桑原, 归寂, 联觉信标, 「权杖」系统, 星穹列车车厢, 琥珀纪, 开拓历, 虚数之树, 四末说, 星际旅行, 万界之癌, 裂界, 令使, 命途行者, 寰宇蝗灾, 谐乐众弦, 存在的地平线, 知识奇点, 学派战争, 幻造, 谐乐大典, 泰坦（翁法罗斯）]
+    source_urls:
+      - https://wiki.biligame.com/sr/%E4%B8%93%E6%9C%89%E5%90%8D%E8%AF%8D
+  - id: worldview-aeons
+    type: worldview
+    file: references/worldview-aeons.md
+    data: data/worldview-aeons.json
+    title: 
+    chapter_order: null
+    entries: 18
+    coverage: 18 个条目，逐条为 wiki 原文释义（已去表格/模板噪声）
+    retrieved_at: 2026-10-10
+    last_updated: 2026-10-10
+    version: 0.1.4
+    tags: [星神与令使, 星神]
+    entities: [星神总览, 开拓·阿基维利, 毁灭·纳努克, 巡猎·岚, 智识·博识尊, 同谐·希佩, 虚无·Ⅸ, 存护·克里珀, 丰饶·药师, 贪饕·奥博洛斯, 欢愉·阿哈, 记忆·浮黎, 纯美·伊德莉拉, 繁育·塔伊兹育罗斯, 神秘·迷思, 均衡·互, 终末·末王, 不朽·龙]
+    source_urls:
+      - https://wiki.biligame.com/sr/%E6%98%9F%E7%A5%9E
+  - id: worldview-factions
+    type: worldview
+    file: references/worldview-factions.md
+    data: data/worldview-factions.json
+    title: 
+    chapter_order: null
+    entries: 52
+    coverage: 52 个条目，逐条为 wiki 原文释义（已去表格/模板噪声）
+    retrieved_at: 2026-10-10
+    last_updated: 2026-10-10
+    version: 0.1.4
+    tags: [派系与组织, 派系, 星穹列车]
+    entities: [派系总览, 无名客, 星穹列车, 仙舟联盟, 巡海游侠, 混沌医师, 第Ⅸ机关, 自灭者, 丰饶之民, 求药使, 反物质军团, 绝灭大君, 泯灭帮, 家族, 天才俱乐部, 博识学会, 源究森林, 筑城者, 星际和平公司, 石心十人, 虫群, 流光忆庭, 焚化工, 无漏净子, 悲悼伶人, 假面愚者, 揽镜人, 纯美骑士团, 虚构史学家, 谜语人, 仲裁官, 丹轮寺, 天外合唱班, 星核猎手, 厄兆先锋, 葬仪知宾, 简介, 星神, 命途, 派系, 关于列车, 派对车厢, 观景车厢, 客房车厢, 末节车厢, 当前列车组与乘客, 历任领航员, 拉格沃克•夏尔•米哈伊尔, 拉扎莉娜•简•艾丝黛拉, 博雷克林•铁尔南, 其他成员, 旅程]
+    source_urls:
+      - https://wiki.biligame.com/sr/%E6%B4%BE%E7%B3%BB
+      - https://wiki.biligame.com/sr/%E6%98%9F%E7%A9%B9%E5%88%97%E8%BD%A6
+  - id: worldview-locations
+    type: worldview
+    file: references/worldview-locations.md
+    data: data/worldview-locations.json
+    title: 
+    chapter_order: null
+    entries: 136
+    coverage: 136 个条目，逐条为 wiki 原文释义（已去表格/模板噪声）
+    retrieved_at: 2026-10-10
+    last_updated: 2026-10-10
+    version: 0.1.4
+    tags: [主线舞台地点, 匹诺康尼, 翁法罗斯]
+    entities: [盛会之星，匹诺康尼, 「家族」总览, 匹诺康尼组织架构, 梦主, 橡木家系, 猎犬家系, 哈努努, 鸢尾花家系, 苜蓿草家系, 拉契卡, 隐夜鸫家系, 图尔度, 折纸筑梦师, 乔伊, 冯恩, 巴罗, 费歇尔, 奥尔拉, 历史家系, 黑布林家系, 灯蛾家系, 钟表匠, 铁尔南, 拉扎莉娜, 折纸小鸟, 苏萨先生, 动画人物, 钟表小子, 哈努兄弟, 仓鼠球骑士, 左轮队长, 镜子公主, 木头老爷, 折纸小鸟, 猫头鹰老师, 黄金公子, 赤红大哥, 野花姐姐, 音符小姐, 叶子店长, 小叶子, 汽水先生, 石头老板, 其他角色, 天环族, 皮皮西人, 智械, 总览, 白日梦酒店, 中央大堂, 客房, 贵宾休息区&宴会厅, 匹诺康尼大剧院, 调弦师, 秩序, 美梦剧团, 梦泡, 艾迪恩公园, 克劳克影视乐园, 苏乐达™热砂海选会场]
+    source_urls:
+      - https://wiki.biligame.com/sr/%E5%8C%B9%E8%AF%BA%E5%BA%B7%E5%B0%BC
+      - https://wiki.biligame.com/sr/%E7%BF%81%E6%B3%95%E7%BD%97%E6%96%AF
+
+# 未收录章节：回答时须说明「知识库尚未收录」，不得凭记忆补写
+not_covered:
+  []   # 当前所有已识别章节均已收录
